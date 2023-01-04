@@ -1,5 +1,5 @@
-import "../../components/directory/directory.scss";
-import Directory from "../../components/directory/directory";
+// import "../../components/directory/directory.scss";
+import Directory from "../../components/directory/Directory";
 
 const Home = () => {
   const categories = [

@@ -1,4 +1,4 @@
-import "./formInput.scss";
+import "./FormInput.scss";
 
 const FormInput = ({ label, ...otherProps }) => {
   // otherProps: value, onChange, name, requiered...
