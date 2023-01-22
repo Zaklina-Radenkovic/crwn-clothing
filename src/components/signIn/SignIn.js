@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 import {
   signInUserWithEmailAndPassword,
   createUserProfileDocument,
@@ -6,7 +7,7 @@ import {
   signInWithGoogleRedirect,
   auth,
 } from "../../utils/firebase/firebase";
-import { getRedirectResult } from "firebase/auth";
+// import { getRedirectResult } from "firebase/auth";
 import FormInput from "../formInput/FormInput";
 import Button from "../button/Button";
 import "./SignIn.scss";
@@ -20,6 +21,7 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
+  const { setCurrentUser } = useContext(UserContext);
   ///////************* WORKING WITH GOOGLE REDIRECT//////
   // this is a way to get response from redirect and to set a user in db;
   // with useEffect, because after we are returned from redirect useeffect starts and runs getRedirectResult fnc that will give us response
@@ -64,9 +66,11 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInUserWithEmailAndPassword(email, password);
-      console.log(response);
-
+      //       const response = await signInUserWithEmailAndPassword(email, password);
+      //       console.log(response);
+      // // OR
+      const { user } = await signInUserWithEmailAndPassword(email, password);
+      setCurrentUser(user);
       resetFormFields();
     } catch (error) {
       switch (error.code) {

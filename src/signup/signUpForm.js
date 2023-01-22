@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserProfileDocument,
 } from "../utils/firebase/firebase";
+import { UserContext } from "../components/context/UserContext";
 import FormInput from "../components/formInput/FormInput";
 import Button from "../components/button/Button";
 import "./SignUp.scss";
@@ -28,6 +29,7 @@ const SignUpForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
+  const { setCurrentUser } = useContext(UserContext);
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
@@ -48,6 +50,7 @@ const SignUpForm = () => {
       //   console.log(user); here we don`t have displayName because we didn`t do it in authentication method
 
       await createUserProfileDocument(user, { displayName }); //this 'displayName' is our obj from input: displayName: somevalue
+      setCurrentUser(user);
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
