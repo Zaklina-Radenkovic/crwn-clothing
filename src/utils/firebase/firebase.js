@@ -9,7 +9,16 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+  query,
+  getDocs,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAhpGmjW_edFyeX1wPghS9jHLFOlqJRyDo",
@@ -34,6 +43,43 @@ export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, provider);
 
 export const db = getFirestore();
+
+export const addCollectionAndDocuments = async (
+  collectionKey, // this is the name of our collection: 'categories'
+  objectsToAdd, // this is document that we add to collection
+  field = "title"
+) => {
+  //getting batch in order to write documents (objects, which we have 5, = categories) in our collection
+  const batch = writeBatch(db);
+  //firebase makes for us collectionRef (we make collection)
+  const collectionRef = collection(db, collectionKey);
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object[field].toLowerCase()); //obj.title we need for key value (name of document)
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  // console.log("done");
+};
+
+export const getCategoriesAndDocuments = async () => {
+  //we want collectionRef of 'categories'
+  const collectionRef = collection(db, "categories");
+  //we apply 'query' method on collectionRef which gives us object 'q'
+  const q = query(collectionRef);
+
+  //we get querysnapshot from getDocs on'q';
+  const querySnapshot = await getDocs(q);
+  //from 'querySnapshot.docs' we have an array of all our categories which we reduce over (we reduce over that arr) in order to structure we want (an arr of objects with 'items.title' and items) = in order to end up with an object
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {}); //this is final obj we want to create which initally is empty
+  // console.log(categoryMap);
+  return categoryMap;
+};
 
 export const createUserProfileDocument = async (
   userAuth,

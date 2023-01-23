@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { UserContext } from "./components/context/UserContext";
+import { UserContext } from "./context/UserContext";
 import Navigation from "./routes/navigation/Navigation";
 import Home from "./routes/home/Home";
 import Shop from "./routes/shop/Shop";
@@ -13,7 +13,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Navigation />}>
         <Route index element={<Home />} />
-        <Route path="shop" element={<Shop />} />
+        <Route path="shop/*" element={<Shop />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="checkout" element={<CheckOut />} />
         <Route
