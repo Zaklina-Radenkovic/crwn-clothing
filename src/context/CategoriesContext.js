@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from "react";
 import {
-  addCollectionAndDocuments,
+  //addCollectionAndDocuments,
   getCategoriesAndDocuments,
 } from "../utils/firebase/firebase";
 
@@ -19,7 +19,7 @@ export const CategoriesProvider = ({ children }) => {
   useEffect(() => {
     //calling 'async' fnc inside of useeffect
     const getCategoriesMap = async () => {
-      const categoryMap = await getCategoriesAndDocuments("categories");
+      const categoryMap = await getCategoriesAndDocuments();
       // console.log(categoryMap);
       setCategoriesMap(categoryMap);
     };

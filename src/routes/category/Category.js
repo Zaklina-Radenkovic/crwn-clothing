@@ -25,7 +25,7 @@ const Category = () => {
   return (
     <div onMouseOver={onCloseHandler}>
       <h2 className="category-title">{category.toUpperCase()}</h2>
-      <div className="category-container" onMouse={() => setIsCartOpen(false)}>
+      <div className="category-container">
         {products &&
           products.map((product) => (
             <ProductCard key={product.id} product={product} />

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import ProductCard from "../productCard/ProductCard";
+import { CartContext } from "../../context/CartContext";
 
 import "./CategoryPreview.scss";
-import { CartContext } from "../../context/CartContext";
 
 const CategoryPreview = ({ title, products }) => {
   const { setIsCartOpen } = useContext(CartContext);

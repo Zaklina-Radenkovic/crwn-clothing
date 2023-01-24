@@ -2,10 +2,10 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import {
   signInUserWithEmailAndPassword,
-  createUserProfileDocument,
+  // createUserProfileDocument,
   signInWithGooglePopup,
-  signInWithGoogleRedirect,
-  auth,
+  // signInWithGoogleRedirect,
+  // auth,
 } from "../../utils/firebase/firebase";
 // import { getRedirectResult } from "firebase/auth";
 import FormInput from "../formInput/FormInput";
@@ -21,7 +21,7 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const { setCurrentUser } = useContext(UserContext);
+  // const { setCurrentUser } = useContext(UserContext);
   ///////************* WORKING WITH GOOGLE REDIRECT//////
   // this is a way to get response from redirect and to set a user in db;
   // with useEffect, because after we are returned from redirect useeffect starts and runs getRedirectResult fnc that will give us response
@@ -47,8 +47,9 @@ const SignInForm = () => {
     // we need to call createUserProfileDocument with 'response' obj. We need that obj in order to make a user in db (cause we need name, email...)
     // const userDocRef = await createUserProfileDocument(response);
     // BUT we can also destructure 'response' obj and get only 'user' from there
-    const { user } = await signInWithGooglePopup();
-    const userDocRef = await createUserProfileDocument(user);
+    // const { user } = await signInWithGooglePopup();
+    await signInWithGooglePopup();
+    // const userDocRef = await createUserProfileDocument(user);
     // console.log(userDocRef);
   };
 
@@ -69,8 +70,9 @@ const SignInForm = () => {
       //       const response = await signInUserWithEmailAndPassword(email, password);
       //       console.log(response);
       // // OR
-      const { user } = await signInUserWithEmailAndPassword(email, password);
-      setCurrentUser(user);
+      // const { user } = await signInUserWithEmailAndPassword(email, password);
+      // setCurrentUser(user);
+      await signInUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
