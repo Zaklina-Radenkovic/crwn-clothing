@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
-import Navigation from "./routes/Navigation/Navigation";
+// import Navigation from "./routes/Navigation/Navigation";
 import Home from "./routes/home/Home";
 import Shop from "./routes/shop/Shop";
 import Authentication from "./routes/authentication/Authentication";
@@ -11,18 +11,16 @@ const App = () => {
   const { currentUser } = useContext(UserContext);
   return (
     <Routes>
-      <Route path="/" element={<Navigation />}>
-        <Route index element={<Home />} />
-        <Route path="shop/*" element={<Shop />} />
-        <Route path="auth" element={<Authentication />} />
-        <Route path="checkout" element={<CheckOut />} />
-        <Route
-          path="auth"
-          element={
-            currentUser ? <Navigate to="/" replace /> : <Authentication />
-          }
-        />
-      </Route>
+      {/* <Route path="/" element={<Navigation />}> */}
+      <Route index element={<Home />} />
+      <Route path="shop/*" element={<Shop />} />
+      <Route path="auth" element={<Authentication />} />
+      <Route path="checkout" element={<CheckOut />} />
+      <Route
+        path="auth"
+        element={currentUser ? <Navigate to="/" replace /> : <Authentication />}
+      />
+      {/* </Route> */}
     </Routes>
   );
 };
