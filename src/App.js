@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
-import Navigation from "./routes/navigation/Navigation.js";
+import Navigation from "./routes/Navigation/Navigation";
 import Home from "./routes/home/Home";
 import Shop from "./routes/shop/Shop";
 import Authentication from "./routes/authentication/Authentication";
