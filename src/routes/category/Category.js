@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import ProductCard from "../../components/productCard/ProductCard";
 import { CartContext } from "../../context/CartContext";
@@ -24,6 +24,14 @@ const Category = () => {
 
   return (
     <div onMouseOver={onCloseHandler}>
+      {String.fromCharCode(8592)}{" "}
+      <Link
+        className="nav-link"
+        style={{ textDecoration: "underline" }}
+        to="/shop"
+      >
+        back to Shop
+      </Link>
       <h2 className="category-title">{category.toUpperCase()}</h2>
       <div className="category-container">
         {products &&

@@ -24,3 +24,19 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .navigation {
+    height: 60px;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    .logo-container {
+      width: 50px;
+      padding: 0;
+    }
+    .nav-links-container {
+      width: 80%;
+    }
+  }
+}

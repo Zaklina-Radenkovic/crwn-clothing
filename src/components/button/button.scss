@@ -44,3 +44,16 @@
     }
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .button-container {
+    display: block;
+    opacity: 0.9;
+    min-width: unset;
+    padding: 0 10px;
+
+    &.inverted {
+      display: block;
+    }
+  }
+}
