@@ -10,7 +10,7 @@ const CategoryPreview = ({ title, products }) => {
   return (
     <div
       className="category-preview-container"
-      onMouseOver={() => setIsCartOpen(false)}
+      // onMouseOver={() => setIsCartOpen(false)}
     >
       <h2>
         <Link className="title" to={title}>

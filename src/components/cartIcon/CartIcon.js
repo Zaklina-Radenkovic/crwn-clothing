@@ -12,7 +12,7 @@ const CartIcon = () => {
     <div
       className="cart-icon-container"
       onClick={toggleDropdownHandler}
-      onMouseEnter={() => setIsCartOpen(true)}
+      // onMouseEnter={() => setIsCartOpen(true)}
     >
       <ShoppingIcon className="shopping-icon" />
       <span className="item-count">{cartCount}</span>

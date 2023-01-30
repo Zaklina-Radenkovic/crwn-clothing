@@ -9,7 +9,7 @@ const CheckOut = () => {
   return (
     <div
       className="checkout-container"
-      onMouseOver={() => setIsCartOpen(false)}
+      // onMouseOver={() => setIsCartOpen(false)}
     >
       <div className="checkout-header">
         <div className="header-block">
