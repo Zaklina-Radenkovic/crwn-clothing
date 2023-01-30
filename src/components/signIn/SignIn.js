@@ -11,6 +11,7 @@ import {
 import FormInput from "../formInput/FormInput";
 import Button from "../button/Button";
 import "./SignIn.scss";
+import { useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
   email: "",
@@ -20,6 +21,7 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+  const navigate = useNavigate();
 
   // const { setCurrentUser } = useContext(UserContext);
   ///////************* WORKING WITH GOOGLE REDIRECT//////
@@ -51,6 +53,7 @@ const SignInForm = () => {
     await signInWithGooglePopup();
     // const userDocRef = await createUserProfileDocument(user);
     // console.log(userDocRef);
+    navigate("/");
   };
 
   const resetFormFields = () => {
@@ -74,6 +77,7 @@ const SignInForm = () => {
       // setCurrentUser(user);
       await signInUserWithEmailAndPassword(email, password);
       resetFormFields();
+      navigate("/");
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":

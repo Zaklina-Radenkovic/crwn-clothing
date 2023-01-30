@@ -8,8 +8,11 @@ import { CategoriesContext } from "../../context/CategoriesContext";
 import "./Category.scss";
 
 const Category = () => {
+  //useParams is a hook that gives us an object of key/value pairs of the dynamic params from the current URL that were matched by the Route path. In our case, It's '<Route path=":category"> that we set in shop.component
   const { category } = useParams();
+
   const { categoriesMap } = useContext(CategoriesContext);
+  // console.log(categoriesMap[category]);
   const [products, setProducts] = useState(categoriesMap[category]);
 
   const { setIsCartOpen } = useContext(CartContext);
@@ -34,6 +37,7 @@ const Category = () => {
       </Link>
       <h2 className="category-title">{category.toUpperCase()}</h2>
       <div className="category-container">
+        {/* setting safeguard if we for some reason don`t have products (because it is async): we need '&&' */}
         {products &&
           products.map((product) => (
             <ProductCard key={product.id} product={product} />

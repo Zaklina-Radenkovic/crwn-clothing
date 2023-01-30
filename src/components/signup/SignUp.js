@@ -7,6 +7,7 @@ import { UserContext } from "../../context/UserContext";
 import FormInput from "../formInput/FormInput";
 import Button from "../button/Button";
 import "./SignUp.scss";
+import { useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
   //this is our [name]:value  // row 21
@@ -29,6 +30,8 @@ const SignUpForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
+  const navigate = useNavigate();
+
   const { setCurrentUser } = useContext(UserContext);
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -42,6 +45,10 @@ const SignUpForm = () => {
       return;
     }
 
+    if (password.length < 6) {
+      alert("Password should be at least 6 characters");
+    }
+
     try {
       const { user } = await createAuthUserWithEmailAndPassword(
         email,
@@ -52,6 +59,7 @@ const SignUpForm = () => {
       await createUserProfileDocument(user, { displayName }); //this 'displayName' is our obj from input: displayName: somevalue
       setCurrentUser(user);
       resetFormFields();
+      navigate("/");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("Cannot create user, email already in use");
