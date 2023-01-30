@@ -6,10 +6,6 @@ import "./CartIcon.scss";
 const CartIcon = () => {
   const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
 
-  // const total = cartItems
-  //   .map(({ quantity }) => quantity)
-  //   .reduce((acc, quantity) => acc + quantity, 0);
-
   const toggleDropdownHandler = () => setIsCartOpen(!isCartOpen);
 
   return (
