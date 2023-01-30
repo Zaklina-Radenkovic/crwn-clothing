@@ -4,13 +4,10 @@ import CheckoutItem from "../../components/checkoutItem/CheckoutItem";
 import "./CheckOut.scss";
 
 const CheckOut = () => {
-  const { cartItems, cartTotal, setIsCartOpen } = useContext(CartContext);
+  const { cartItems, cartTotal } = useContext(CartContext);
 
   return (
-    <div
-      className="checkout-container"
-      // onMouseOver={() => setIsCartOpen(false)}
-    >
+    <div className="checkout-container">
       <div className="checkout-header">
         <div className="header-block">
           <span>Product</span>

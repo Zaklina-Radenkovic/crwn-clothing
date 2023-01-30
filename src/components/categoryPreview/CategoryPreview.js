@@ -1,17 +1,12 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+
 import ProductCard from "../productCard/ProductCard";
-import { CartContext } from "../../context/CartContext";
 
 import "./CategoryPreview.scss";
 
 const CategoryPreview = ({ title, products }) => {
-  const { setIsCartOpen } = useContext(CartContext);
   return (
-    <div
-      className="category-preview-container"
-      // onMouseOver={() => setIsCartOpen(false)}
-    >
+    <div className="category-preview-container">
       <h2>
         <Link className="title" to={title}>
           {title.toUpperCase()}
