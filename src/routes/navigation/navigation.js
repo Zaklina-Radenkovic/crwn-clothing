@@ -6,7 +6,7 @@ import { UserContext } from "../../context/UserContext";
 import { CartContext } from "../../context/CartContext";
 import { signOutUser } from "../../utils/firebase/firebase";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
-import "./Navigation.scss";
+import "./Navigation.style.jsx";
 
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
