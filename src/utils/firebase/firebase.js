@@ -21,12 +21,12 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAhpGmjW_edFyeX1wPghS9jHLFOlqJRyDo",
+  apiKey: "xxxxxxxxxxxxxxxxx",
   authDomain: "crwn-clothing-db-ffb8f.firebaseapp.com",
-  projectId: "crwn-clothing-db-ffb8f",
-  storageBucket: "crwn-clothing-db-ffb8f.appspot.com",
-  messagingSenderId: "871546324516",
-  appId: "1:871546324516:web:b6ec060c2b1cdf94b9fab1",
+  projectId: "xxxxxxxxxxxxxxxxx",
+  storageBucket: "xxxxxxxxxxxxxxxxx",
+  messagingSenderId: "xxxxxxxxxxxxxxxxx",
+  appId: "xxxxxxxxxxxxxxxxx",
 };
 
 // Initialize Firebase
